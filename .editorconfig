@@ -1,29 +1,13 @@
-# EditorConfig is awesome: https://EditorConfig.org
-
-# Top-most EditorConfig file
 root = true
 
-# Set default indentation style to 2 spaces
 [*]
-indent_style = space
-indent_size = 2
+indent_style = tab
+indent_size = 4
 
-# Set indentation style for JavaScript files
-[*.js]
-indent_style = space
-indent_size = 2
+[*.c]
+indent_style = tab
+indent_size = 4
 
-# Set indentation style for Python files
-[*.py]
-indent_style = space
-indent_size = 2
-
-# Set indentation style for HTML files
-[*.html]
-indent_style = space
-indent_size = 2
-
-# Set indentation style for CSS files
-[*.css]
-indent_style = space
-indent_size = 2
+[*.cpp]
+indent_style = tab
+indent_size = 4

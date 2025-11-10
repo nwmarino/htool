@@ -1,7 +1,0 @@
-#ifndef SOTERIA_VERSION_H
-#define SOTERIA_VERSION_H
-
-#define VERSION_MAJOR @soteria_VERSION_MAJOR@
-#define VERSION_MINOR @soteria_VERSION_MINOR@
-
-#endif // SOTERIA_VERSION_H

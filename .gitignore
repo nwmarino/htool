@@ -1,8 +1,7 @@
+.vscode/
 .cache/
 build/
-main
-soteria
-soteria.exe
-features.txt
-soteria_tests
-soteria_tests.exe
+htool
+htool.exe
+htool_tests
+htool_tests.exe

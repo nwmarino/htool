@@ -1,9 +1,9 @@
 ---
 Language: Cpp
 BasedOnStyle: LLVM
-IndentWidth: 2
-UseTab: Never
-TabWidth: 2
+IndentWidth: 4
+UseTab: Always
+TabWidth: 4
 AccessModifierOffset: -4
-PointerAlignment: Right
+PointerAlignment: Left
 ...

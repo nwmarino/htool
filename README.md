@@ -1,24 +1,68 @@
-# soteria
+# htool
 
-Soteria provides a way to centralize encrypted data on any drive. By containerizing
-files, encrypted data can be moved in one contained place.
+`htool` provides a way to organize encrypted data that is accessible on any 
+drive. By containerizing files based on their pre-existing metadata, encrypted 
+data can be moved in an organized manner while retaining data security.
 
-Creates a new container `MyContainer` in the current working directory:
-```sh
-soteria --mk MyContainer --pw <password>
+## Layout
+
+Containers use a special layout to maintain the order of files contained within
+them and to allow for operations like compaction and compression.
+
+The following is a brief outline of how a container uses the 32KB it reserves,
+in terms of bytes:
+```
+0-4 | version
+4-20 | master salt
+20-32 | master hash
+32-52 | fat allocation table IV
+52-68 | fat allocation table size
+76- | fat allocation table entries
 ```
 
-Deletes a container `MyContainer` in the current working directory:
-```sh
-soteria --rm MyContainer --pw <password>
+The first field is a version marker that informs the compatibility of a 
+container with htool. This means older containers may not work with newer
+versions of the tool to prevent corruption.
+
+Containers are managed only by a master password that cannot be overwritten.
+Alongside the hashed master pass is the salt, to be used for verification.
+
+The rest of the reserved space is allocated to the file allocation table (FAT),
+which gets encrypted also, to record files in the container.
+
+## Commands
+
+*All operations that in any way modify an existing container require its password.*
+
+Make a new container `secrets` in the current working directory (CWD):
+```
+htool --mk secrets --pw 1234
 ```
 
-Write and encrypt one or more files to the container `MyContainer`:
-```sh
-soteria MyContainer --pw <password> --store passwords.txt presentation.mp4
+Destroy the container `secrets` in the CWD:
+```
+htool --rm secrets --pw 1234
 ```
 
-Decrypt and read one or more files from the container `MyContainer`:
-```sh
-soteria MyContainer --pw <password> --load github_password.txt
+Write one or more files to `secrets`:
+```
+htool secrets --pw 1234 --store passwords.txt treasure_map.png
+```
+
+Load one or more files from `secrets`:
+```
+htool secrets --pw 1234 --load seed_phrase.txt
+```
+
+List out all the files in `secrets`:
+```
+htool secrets --pw 1234 --list
+```
+
+This dumps the following to a file in the CWD:
+```
+Filename           Original Size  Last Modified            
+----------------------------------------------------------
+passwords.txt      2714           1996-09-17 03:31:50      
+treasure_map.png   163273         1996-09-17 07:14:57      
 ```
