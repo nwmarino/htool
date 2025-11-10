@@ -12,7 +12,7 @@
 #ifndef HTOOL_COMMON_H_
 #define HTOOL_COMMON_H_
 
-#define VERSION_MINOR 1
+#define VERSION_MINOR 0
 #define VERSION_MAJOR 1
 
 #endif // HTOOL_COMMON_H_
