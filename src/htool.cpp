@@ -10,8 +10,8 @@
 //
 
 #include "cli.h"
+#include "common.h"
 #include "container.h"
-#include "include/core/version.h"
 
 #include "boost/filesystem/operations.hpp"
 
@@ -27,8 +27,8 @@ int main(int argc, char** argv) {
     CLIOptions opts = parse(argc, argv);
 
     if (opts.print_version) {
-        info("version " + std::string(VERSION_MAJOR) + "." + 
-			std::string(VERSION_MINOR));
+        info("version " + std::to_string(VERSION_MAJOR) + "." + 
+			std::to_string(VERSION_MINOR));
 	}
 
 	if (opts.cmd == Command::Make) {

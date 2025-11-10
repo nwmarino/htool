@@ -1,6 +1,9 @@
 .vscode/
 .cache/
 build/
+build-linux/
+build-win/
+build-mac/
 htool
 htool.exe
 htool_tests
