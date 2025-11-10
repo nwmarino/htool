@@ -66,3 +66,21 @@ Filename           Original Size  Last Modified
 passwords.txt      2714           1996-09-17 03:31:50      
 treasure_map.png   163273         1996-09-17 07:14:57      
 ```
+
+## Building
+
+To build on any platform, you'll need
+```
+boost >= 1.8
+cmake >= 3.15
+openssl >= 3.6.0
+```
+
+and any compiler that supports C++20, i.e. clang 21.
+
+Using CMake,
+```
+mkdir build && cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+cmake --build .
+```
